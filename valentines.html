@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<!-- https://wongpeggy.github.io/pl2/valentines.html -->
+<!-- Author: Peggy Wong -->
+<!-- Date Created: Feb 16, 2022 -->
+<!-- Date Modified: Feb 17, 2022 -->
+<!-- Description: Celebrate Valentine's Day in Edmonton, AB -->
+<!-- Source: https://www.todocanada.ca/valentines-day-in-edmonton/ -->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>Valentine's Day | Edmonton, AB</title>
+    <style>
+      html,
+      body,
+      #viewDiv {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+      }
+      #title {
+        background-color: #FFFFFF80;
+        border-radius: 25px;
+        color: #490000;
+        font-family: Helvetica, sans-serif;
+        left: 4vw;
+        padding-left: 1vw;
+        padding-right: 1vw;
+        position: absolute;
+        top: 1vw;
+      }
+    </style>
+    <!-- Reference the CSS file and JS library -->
+    <link rel="stylesheet" href="https://js.arcgis.com/4.22/esri/themes/light/main.css">
+    <script src="https://js.arcgis.com/4.22/"></script>
+    <!-- Reference the Map and MapView modules in the require statement -->
+    <script>
+      require(["esri/config", "esri/Map", "esri/views/MapView", "esri/Graphic", "esri/layers/GraphicsLayer", "esri/widgets/Locate", "esri/widgets/ScaleBar"], function (esriConfig, Map, MapView, Graphic, GraphicsLayer, Locate, ScaleBar) {
+        esriConfig.apiKey = "AAPK3427ffc4f3a1475ca19b64730cc65445GrSIENSFe0N6XenbQLn17VOZHVgF5F2IJRF1Zi2wTZ1XUA90Z9CnnizqFZ2C8CB-";
+        const map = new Map({
+          basemap: "arcgis-modern-antique" // Basemap layer service
+        });
+        const view = new MapView({
+          map: map,
+          center: [-113.49376754950849, 53.54611336932896], // Longitude, latitude
+          zoom: 11, // Zoom level
+          container: "viewDiv" // Div element
+        });
+        const graphicsLayer = new GraphicsLayer();
+        map.add(graphicsLayer);
+        const simpleMarkerSymbol = {
+          type: "simple-marker",
+          color: [165, 42, 42],
+          size: 10,
+          outline: {
+            color: [128, 0, 32],
+            width: 1
+          }
+        };
+        //Create a point for Valentine's Acro & Massage Workshop
+        const pointMassage = {
+          type: "point",
+          longitude: -113.50434446062212,
+          latitude: 53.54797583513003
+        };
+        const popupTemplateMassage = {
+            title: "{Name}",
+            content: "{Address}"
+        }
+        const attributesMassage = {
+            Name: "Valentine's Acro & Massage Workshop",
+            Address: "Boulders Climbing, 10505 107 St NW, Edmonton, AB, T5H 2Y5"
+        }
+        const pointGraphicMassage = new Graphic({
+          geometry: pointMassage,
+          symbol: simpleMarkerSymbol,
+          attributes: attributesMassage,
+          popupTemplate: popupTemplateMassage
+        });
+        graphicsLayer.add(pointGraphicMassage);
+        //Create a point for Latin Valentines Dance Workshop
+        const pointDance = {
+          type: "point",
+          longitude: -113.49352391130425,
+          latitude: 53.555208508745814
+        };
+        const popupTemplateDance = {
+            title: "{Name}",
+            content: "{Address}"
+        }
+        const attributesDance = {
+            Name: "Latin Valentines Dance Workshop",
+            Address: "ETOWN SALSA Latin Dance Studios, 10923 101 St NW, Edmonton, AB, T5H 2S7"
+        }
+        const pointGraphicDance = new Graphic({
+          geometry: pointDance,
+          symbol: simpleMarkerSymbol,
+          attributes: attributesDance,
+          popupTemplate: popupTemplateDance
+        });
+        graphicsLayer.add(pointGraphicDance);
+        //Create a point for The Valentine’s Day Improv Show
+        const pointImprov = {
+          type: "point",
+          longitude: -113.49469438675409,
+          latitude: 53.52171264740031
+        };
+        const popupTemplateImprov = {
+            title: "{Name}",
+            content: "{Address}"
+        }
+        const attributesImprov = {
+            Name: "The Valentine's Day Improv Show",
+            Address: "Rapid Fire Theatre, 8529 Gateway Blvd, Edmonton, AB, T6E 6P3"
+        }
+        const pointGraphicImprov = new Graphic({
+          geometry: pointImprov,
+          symbol: simpleMarkerSymbol,
+          attributes: attributesImprov,
+          popupTemplate: popupTemplateImprov
+        });
+        graphicsLayer.add(pointGraphicImprov);
+        //Create a point for Sweetheart Snowshoe
+        const pointSnowshoe = {
+          type: "point",
+          longitude: -113.55903963666448,
+          latitude: 53.50407527034083
+        };
+        const popupTemplateSnowshoe = {
+            title: "{Name}",
+            content: "{Address}"
+        }
+        const attributesSnowshoe = {
+            Name: "Sweetheart Snowshoe",
+            Address: "Whitemud Park, 13204 Fox Dr NW, Edmonton, AB, T6H 4P3"
+        }
+        const pointGraphicSnowshoe = new Graphic({
+          geometry: pointSnowshoe,
+          symbol: simpleMarkerSymbol,
+          attributes: attributesSnowshoe,
+          popupTemplate: popupTemplateSnowshoe
+        });
+        graphicsLayer.add(pointGraphicSnowshoe);
+        //Create a point for Glow Shoe
+        const pointGrowshoe = {
+          type: "point",
+          longitude: -113.30808392305444,
+          latitude: 53.529474680742624
+        };
+        const popupTemplateGrowshoe = {
+            title: "{Name}",
+            content: "{Address}"
+        }
+        const attributesGrowshoe = {
+            Name: "Snowshoeing: Glow Shoe",
+            Address: "Broadmoor Public Golf Course, 2100 Oak St, Sherwood Park, AB, T8A 0V9"
+        }
+        const pointGraphicGrowshoe = new Graphic({
+          geometry: pointGrowshoe,
+          symbol: simpleMarkerSymbol,
+          attributes: attributesGrowshoe,
+          popupTemplate: popupTemplateGrowshoe
+        });
+        graphicsLayer.add(pointGraphicGrowshoe);
+        //Create a point for Silver Skate Festival
+        const pointSkate = {
+          type: "point",
+          longitude: -113.54899999268392,
+          latitude: 53.52799701390154
+        };
+        const popupTemplateSkate = {
+            title: "{Name}",
+            content: "{Address}"
+        }
+        const attributesSkate = {
+            Name: "Silver Skate Festival",
+            Address: "William Hawrelak Park, 9930 Groat Rd NW, Edmonton, AB, T6G 2A8"
+        }
+        const pointGraphicSkate = new Graphic({
+          geometry: pointSkate,
+          symbol: simpleMarkerSymbol,
+          attributes: attributesSkate,
+          popupTemplate: popupTemplateSkate
+        });
+        graphicsLayer.add(pointGraphicSkate);
+        //Create a point for Laser Show
+        const pointLaser = {
+          type: "point",
+          longitude: -113.56362674111666,
+          latitude: 53.561001603428586
+        };
+        const popupTemplateLaser = {
+            title: "{Name}",
+            content: "{Address}"
+        }
+        const attributesLaser = {
+            Name: "Laser Show",
+            Address: "TELUS World of Science, 11211 142 St NW, Edmonton, AB, T5M 4A1"
+        }
+        const pointGraphicLaser = new Graphic({
+          geometry: pointLaser,
+          symbol: simpleMarkerSymbol,
+          attributes: attributesLaser,
+          popupTemplate: popupTemplateLaser
+        });
+        graphicsLayer.add(pointGraphicLaser);
+        //Create a point for Love Is in the Air: A Valentine's Day Afternoon Tea
+        const pointTea = {
+          type: "point",
+          longitude: -113.51977271232137,
+          latitude: 53.548956553638924
+        };
+        const popupTemplateTea = {
+            title: "{Name}",
+            content: "{Address}"
+        }
+        const attributesTea = {
+            Name: "Love Is in the Air: A Valentine's Day Afternoon Tea",
+            Address: "Brew+Bloom Cafe, 10550 115 St NW, Edmonton, AB, T5H 3K6"
+        }
+        const pointGraphicTea = new Graphic({
+          geometry: pointTea,
+          symbol: simpleMarkerSymbol,
+          attributes: attributesTea,
+          popupTemplate: popupTemplateTea
+        });
+        graphicsLayer.add(pointGraphicTea);
+        //Create a point for Valentine's Week Bubbles & Rose Tasting
+        const pointWine = {
+          type: "point",
+          longitude: -113.51444214328657,
+          latitude: 53.45452944034413
+        };
+        const popupTemplateWine = {
+            title: "{Name}",
+            content: "{Address}"
+        }
+        const attributesWine = {
+            Name: "Valentine's Week Bubbles & Rose Tasting",
+            Address: "Century Park Cellars, 2349 111 St Northwest, Edmonton, AB, T6J 5E5"
+        }
+        const pointGraphicWine = new Graphic({
+          geometry: pointWine,
+          symbol: simpleMarkerSymbol,
+          attributes: attributesWine,
+          popupTemplate: popupTemplateWine
+        });
+        graphicsLayer.add(pointGraphicWine);
+        //Create a point for Fantasyland Hotel Amore Package
+        const pointStaycation = {
+          type: "point",
+          longitude: -113.62770110816045,
+          latitude: 53.521993865277736
+        };
+        const popupTemplateStaycation = {
+            title: "{Name}",
+            content: "{Address}"
+        }
+        const attributesStaycation = {
+            Name: "Fantasyland Hotel: Amore Package",
+            Address: "Fantasyland Hotel, 17700 87 Ave NW, Edmonton, AB, T5T 4V4"
+        }
+        const pointGraphicStaycation = new Graphic({
+          geometry: pointStaycation,
+          symbol: simpleMarkerSymbol,
+          attributes: attributesStaycation,
+          popupTemplate: popupTemplateStaycation
+        });
+        graphicsLayer.add(pointGraphicStaycation);
+        // Create a locate widget
+        // Reference: https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Locate.html
+        const locate = new Locate({
+          view: view,
+          useHeadingEnabled: false,
+          goToOverride: function(view, options) {
+            options.target.scale = 1500;
+            return view.goTo(options.target);
+          }
+        });
+        view.ui.add(locate, "top-left");
+        // Create a scale bar widget
+        // Reference: https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-ScaleBar.html
+        const scalebar = new ScaleBar({
+          view: view,
+          unit: "metric"
+        });
+        view.ui.add(scalebar, "bottom-left");
+      });
+    </script>
+  </head>
+  <body>
+    <div id="viewDiv"></div>
+    <div id="title">
+      <h1>♥ Celebrate Valentine's Day in Edmonton, AB ♥</h1>
+    </div>
+  </body>
+</html>
