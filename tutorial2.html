@@ -1,0 +1,59 @@
+<html>
+<!-- https://wongpeggy.github.io/pl2/tutorial2.html -->
+<!-- Author: Peggy Wong -->
+<!-- Date Created: Feb 16, 2022 -->
+<!-- Date Modified: Feb 16, 2022 -->
+<!-- Description: Display Your Location -->
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>ArcGIS API for JavaScript Tutorials: Display a map</title>
+    <style>
+      html,
+      body,
+      #viewDiv {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+    <!-- Reference the CSS file and JS library -->
+    <link rel="stylesheet" href="https://js.arcgis.com/4.22/esri/themes/light/main.css">
+    <script src="https://js.arcgis.com/4.22/"></script>
+    <!-- Reference the Map and MapView modules in the require statement -->
+    <script>
+      require(["esri/config", "esri/Map", "esri/views/MapView", "esri/widgets/Locate", "esri/widgets/Track", "esri/Graphic"], function (esriConfig, Map, MapView, Locate, Track, Graphic) {
+        esriConfig.apiKey = "AAPK3427ffc4f3a1475ca19b64730cc65445GrSIENSFe0N6XenbQLn17VOZHVgF5F2IJRF1Zi2wTZ1XUA90Z9CnnizqFZ2C8CB-";
+        const map = new Map({
+          basemap: "arcgis-navigation" // Basemap layer service
+        });
+        const view = new MapView({
+          map: map,
+          center: [-40, 28], // Longitude, latitude
+          zoom: 2, // Zoom level
+          container: "viewDiv" // Div element
+        });
+        const track = new Track({
+          view: view,
+          graphic: new Graphic({
+            symbol: {
+              type: "simple-marker",
+              size: "12px",
+              color: "green",
+              outline: {
+                color: "#efefef",
+                width: "1.5px"
+              }
+            }
+          }),
+          useHeadingEnabled: false
+        });
+        view.ui.add(track, "top-left");
+      });
+    </script>
+  </head>
+  <body>
+    <div id="viewDiv"></div>
+  </body>
+</html>
